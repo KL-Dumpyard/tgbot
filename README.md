@@ -1,16 +1,14 @@
-<img align="right" width="260" height="260" alt="MissAhegaoBot" src="https://i.ibb.co/QfBPjQL/Avatars-Xyju6-Oujg-Jzzrbp9-bg6-Ny-A-t500x500.jpg">
+<img align="right" width="260" height="260" alt="KazumaLumaBot" src="https://telegra.ph/file/5df064b64df3ed6f78284.jpg">
 
-# MissAhegaoBot
+# KazumaLumaBot
 A modular telegram Python bot running on python3 with an sqlalchemy database.
 
 Originally a simple group management bot with multiple admin features, it has evolved into becoming a basis for modular
 bots aiming to provide simple plugin expansion via a simple drag and drop.
 
-Can be found on telegram as [MissAhegaoBot](https://t.me/MissAhegaoBot).
+Can be found on telegram as [KazumaLumaBot](https://t.me/KazumaLumaBot).
 
-For any queries report at [AhegaoBotSupport](https://t.me/AhegaoBotSupport).
-
-News channel at [AhegaoBotNews](https://t.me/AhegaoBotNews).
+For any queries report at [KazumaLumaSupport](https://t.me/KazumaLumaSupport).
 
 `I don't support forks so solve your problems by yourself.`
 
@@ -166,7 +164,7 @@ You can then add commands using the usual
 
 Assigning the `__help__` variable to a string describing this modules' available
 commands will allow the bot to load it and add the documentation for
-your module to the `/help` command. Setting the `__mod_name__` variable will also allow you to use a nicer, user
+your module to thewouldn't `/help` command. Setting the `__mod_name__` variable will also allow you to use a nicer, user
 friendly name for a module.
 
 The `__migrate__()` function is used for migrating chats - when a chat is upgraded to a supergroup, the ID changes, so 
@@ -174,3 +172,7 @@ it is necessary to migrate it in the db.
 
 The `__stats__()` function is for retrieving module statistics, eg number of users, number of chats. This is accessed 
 through the `/stats` command, which is only available to the bot owner.
+
+  
+  # Credits
+ Credits to [PaulSonOfLars](github.com/PaulSonOfLars), and [el0xren](github.com/el0xren) without them this repo wouldn't exist!
