@@ -20,7 +20,7 @@ from tg_bot.modules.helper_funcs.chat_status import is_user_admin
 from tg_bot.modules.helper_funcs.misc import paginate_modules
 from tg_bot.modules.helper_funcs.misc import send_to_list
 
-BOT_IMG = "https://telegra.ph/file/572f1989b04f0eefa53b0.jpg"
+BOT_IMG = "https://telegra.ph/file/5df064b64df3ed6f78284.jpg"
 
 PM_START_TEXT = """
 Hi {}, my name is {}!
@@ -137,7 +137,7 @@ def start(update: Update, context: CallbackContext):
                 PM_START_TEXT.format(escape_markdown(first_name), escape_markdown(bot.first_name), OWNER_ID),
                 parse_mode=ParseMode.MARKDOWN, reply_markup=InlineKeyboardMarkup([[
                         InlineKeyboardButton(text="Source Code",
-                                             url="github.com/el0xren/tgbot")
+                                             url="github.com/KazumaLumaBot/tgbot")
                         ], [
                         InlineKeyboardButton(text="Support Group",
                                              url=f"t.me/{SUPPORT_CHAT}")
