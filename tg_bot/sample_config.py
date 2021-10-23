@@ -13,7 +13,7 @@ class Config(object):
     LOGGER = True
 
     # REQUIRED
-    API_KEY = "YOUR KEY HERE"
+    API_KEY = "YOUR KEY HERE" # here, you put your bot token.
     OWNER_ID = "YOUR ID HERE"  # If you dont know, run the bot and do /id in your private chat with it
     OWNER_USERNAME = "YOUR USERNAME HERE"
 
@@ -42,7 +42,7 @@ class Config(object):
     ALLOW_EXCL = False  # Allow ! commands as well as /
     SUPPORT_CHAT = None # Chat username without @
     INFOPIC = False
-    START_STICKER = 'CAACAgIAAx0CWFZqDQABBkpeYT4ykmRFN7qjtrzCH4-EYzGVkGwAAmIAA3_0Mxx8ZiETK_KDeiAE'
+    START_STICKER = 'CAACAgQAAxkBAAICc2F0FDOTOdUn06jtMcfYWJS6X5bxAAKoDAACiTGhU5jiwt8dvFHnIQQ'
     LOGS = None
     IGNORE_PENDING_REQUESTS = False
 
