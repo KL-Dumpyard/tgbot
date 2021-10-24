@@ -20,6 +20,7 @@ from tg_bot.__main__ import STATS, USER_INFO, TOKEN
 from tg_bot.modules.disable import DisableAbleCommandHandler
 from tg_bot.modules.helper_funcs.extraction import extract_user
 from tg_bot.modules.helper_funcs.filters import CustomFilters
+from tg_bot.modules.helper_funcs.chat_status import user_admin
 from tg_bot.modules.sql.afk_sql import is_afk, check_afk_status
 
 RUN_STRINGS = (
@@ -329,6 +330,39 @@ def info(update: Update, context: CallbackContext):
             text, parse_mode=ParseMode.HTML, disable_web_page_preview=True
         )
 
+@user_admin
+def ginfo(update: Update, context: CallbackContext):
+    bot = context.bot
+    msg = update.effective_message
+    chat = update.effective_chat
+    user = update.effective_user
+
+    if chat.type == "private":
+        msg.reply_text("Please reply this command in group!")
+    else:
+        text = "<b>Chat Info:</b>" \
+               "\nㅤChat Title: {}".format(update.effective_chat.title)
+
+        if chat.username:
+            text += "\nㅤChat Username: @{}".format(chat.username)
+
+        text += "\nㅤChat ID: {}".format(chat.id)
+
+        if chat.type in [chat.SUPERGROUP, chat.CHANNEL]:
+            bot_member = chat.get_member(bot.id)
+            if bot_member.can_invite_users:
+                invitelink = bot.exportChatInviteLink(chat.id)
+                text += f"\nㅤInvitelink: {invitelink}"
+
+        admins_count = bot.getChatAdministrators(chat.id)
+        status = chat.get_member(user.id)
+        if status == "administrator" or "creator":
+            text += "\nㅤTotal Admins: {}".format(len(admins_count))
+
+        text += "\nㅤTotal Members: {}".format(chat.get_members_count(user.id))
+
+        msg.reply_text(text, disable_web_page_preview=True, parse_mode=ParseMode.HTML)
+
 
 def get_time(update: Update, context: CallbackContext):
     bot = context.bot
@@ -506,6 +540,7 @@ TIME_HANDLER = CommandHandler("time", get_time, run_async=True)
 RUNS_HANDLER = DisableAbleCommandHandler("runs", runs, run_async=True)
 SLAP_HANDLER = DisableAbleCommandHandler("slap", slap, run_async=True)
 INFO_HANDLER = DisableAbleCommandHandler("info", info, run_async=True)
+GINFO_HANDLER = DisableAbleCommandHandler("ginfo", ginfo, run_async=True)
 FLASH_HANDLER = DisableAbleCommandHandler("flash", flash, run_async=True)
 
 ECHO_HANDLER = CommandHandler("echo", echo, filters=Filters.user(OWNER_ID), run_async=True)
@@ -520,6 +555,7 @@ dispatcher.add_handler(ID_HANDLER)
 dispatcher.add_handler(RUNS_HANDLER)
 dispatcher.add_handler(SLAP_HANDLER)
 dispatcher.add_handler(INFO_HANDLER)
+dispatcher.add_handler(GINFO_HANDLER)
 dispatcher.add_handler(FLASH_HANDLER)
 dispatcher.add_handler(ECHO_HANDLER)
 dispatcher.add_handler(RECHO_HANDLER)
