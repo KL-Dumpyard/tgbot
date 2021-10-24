@@ -4,7 +4,7 @@ from typing import Optional
 
 from telegram import TelegramError, Chat, Message
 from telegram import Update, Bot, ParseMode
-from telegram.error import BadRequest
+from telegram.error import BadRequest, Unauthorized
 from telegram.ext import MessageHandler, Filters, CommandHandler
 from telegram.ext.dispatcher import run_async
 
@@ -113,7 +113,18 @@ def chats(update: Update, context: CallbackContext):
                                                 caption="Here is the list of chats in my database.")
 
 
+def chat_checker(update: Update, context: CallbackContext):
+    bot = context.bot
+    try:
+        if update.effective_message.chat.get_member(bot.id).can_send_messages is False:
+            bot.leaveChat(update.effective_message.chat.id)
+    except Unauthorized:
+        pass
+
+
 def __user_info__(user_id):
+    if user_id in [777000, 1087968824]:
+        return """<b>Common Groups:</b> <code>???</code>"""
     if user_id == dispatcher.bot.id:
         return """I've seen them in... Wow. Are they stalking me? They're in all the same places I am... oh. It's me."""
     num_chats = sql.get_user_num_chats(user_id)
