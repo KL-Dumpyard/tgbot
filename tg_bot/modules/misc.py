@@ -288,7 +288,6 @@ def info(update: Update, context: CallbackContext):
 
     text += "\nㅤProfile Pics: <code>{}</code>".format(bot.get_user_profile_photos(user.id).total_count, parse_mode=ParseMode.HTML)
 
-
     text += "\nㅤCAS Banned: "
     result = cas.banchecker(user.id)
     text += str(result)
@@ -304,7 +303,7 @@ def info(update: Update, context: CallbackContext):
 
         if user_member.status == "left":
                 text += f"\nㅤPresence: <b>Not here</b>"
-        if user_member.status == "kicked":
+        elif user_member.status == "kicked":
                 text += f"\nㅤPresence: <b>Banned</b>"
         elif user_member.status == "member":
                 text += f"\nㅤPresence: <b>Detected</b>"
