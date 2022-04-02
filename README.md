@@ -1,6 +1,6 @@
 <img align="right" width="260" height="260" alt="KazumaLumaBot" src="https://telegra.ph/file/5df064b64df3ed6f78284.jpg">
 
-# KazumaLumaBot
+# KazumaLumaBot - EOL 
 A modular telegram Python bot running on python3 with an sqlalchemy database.
 
 Originally a simple group management bot with multiple admin features, it has evolved into becoming a basis for modular
